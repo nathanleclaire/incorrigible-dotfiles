@@ -122,3 +122,5 @@ bind '"\eOC":forward-word'
 bind '"\eOD":backward-word'
 
 alias phpunit="phpunit --colors"
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
