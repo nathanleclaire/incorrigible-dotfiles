@@ -124,3 +124,10 @@ bind '"\eOD":backward-word'
 alias phpunit="phpunit --colors"
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+
+function newbox () {
+    docker run --name $1 -it -d -v /var/run/docker.sock:/var/run/docker.sock nathanleclaire/devbox
+}
+alias da="docker attach"
+alias drm="docker rm"
