@@ -124,3 +124,6 @@ bind '"\eOD":backward-word'
 alias phpunit="phpunit --colors"
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
