@@ -108,12 +108,22 @@ function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
 
+function parse_box () {
+	if env | grep -q ^BOX_NAME=
+	then
+		echo "{c:$BOX_NAME} "
+	else
+		echo ""
+	fi
+}
+
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
+LIGHT_GRAY="\[\033[0;37m\]"
 NO_COLOUR="\[\033[0m\]"
 
-PS1="$YELLOW\$(parse_git_branch)$GREEN[ \w ] $NO_COLOUR\$ "
+PS1="$RED\$(parse_box)$YELLOW\$(parse_git_branch)$GREEN[ \w ] $NO_COLOUR\$ "
 
 [[ $- = *i* ]] && bind TAB:menu-complete
 
@@ -129,7 +139,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 function newbox () {
-    docker run --name $1 -it -d -v /var/run/docker.sock:/var/run/docker.sock nathanleclaire/devbox
+    docker run --name $1 -it -d -v /var/run/docker.sock:/var/run/docker.sock nathanleclaire/devbox -e BOX_NAME=$1
 }
 alias da="docker attach"
 alias drm="docker rm"
