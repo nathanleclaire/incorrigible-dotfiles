@@ -139,7 +139,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 function newbox () {
-    docker run --name $1 -it -d -v /var/run/docker.sock:/var/run/docker.sock nathanleclaire/devbox -e BOX_NAME=$1
+    docker run --name $1 -it -d -v /var/run/docker.sock:/var/run/docker.sock -e BOX_NAME=$1 nathanleclaire/devbox
 }
 alias da="docker attach"
 alias drm="docker rm"
