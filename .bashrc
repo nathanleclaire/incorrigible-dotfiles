@@ -143,3 +143,8 @@ function newbox () {
 }
 alias da="docker attach"
 alias drm="docker rm"
+
+if env | grep -q ^BOX_NAME=
+then
+	export DOCKER_HOST=tcp://localhost:4243
+fi
