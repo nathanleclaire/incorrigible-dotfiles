@@ -139,12 +139,20 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 function newbox () {
-    docker run --name $1 -it -d -v /var/run/docker.sock:/var/run/docker.sock -e BOX_NAME=$1 nathanleclaire/devbox
+    docker run --name $1 --volumes-from=volume_container -it -v /var/run/docker.sock:/var/run/docker.sock -e BOX_NAME=$1 nathanleclaire/devbox
 }
-alias da="docker attach"
+function da () {
+	docker start $1 && docker attach $1
+}
 alias drm="docker rm"
 
 if env | grep -q ^BOX_NAME=
 then
-	export DOCKER_HOST=tcp://localhost:4243
+	unset DOCKER_HOST
+else
+	export DOCKER_HOST=tcp://boot2docker:2375
 fi
+
+function half() {
+	convert -resize 50% $1 $1
+}
