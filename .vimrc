@@ -171,17 +171,18 @@ nnoremap <leader>h m`:%!js-beautify --type html -f -<cr>``
 execute pathogen#infect()
 syntax on
 filetype on
-filetype plugin on
+filetype plugin indent on
 
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 let g:ctrlp_match_files = 0
 let g:ctrlp_clear_cache_on_exit = 0
+command! W write
+command! Wa wa
 
-set tabstop=4
-set shiftwidth=4
-set shiftwidth=4
-set expandtab
 
-set list
+"set tabstop=4
+"set shiftwidth=4
+"set shiftwidth=4
+"set expandtab
+
+"set list
+"

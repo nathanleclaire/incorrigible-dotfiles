@@ -145,6 +145,7 @@ function da () {
 	docker start $1 && docker attach $1
 }
 alias drm="docker rm"
+alias dps="docker ps"
 
 if env | grep -q ^BOX_NAME=
 then
