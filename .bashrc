@@ -157,3 +157,17 @@ fi
 function half() {
 	convert -resize 50% $1 $1
 }
+
+docker-enter() {
+    boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
+    boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
+}
+
+dps-monitor() {
+   while true
+   do 
+       clear 
+       docker ps | cut -c -$(tput cols)
+       sleep 0.5 
+   done
+}
