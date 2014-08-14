@@ -162,7 +162,7 @@ function! GetClassMethods()
 endfunction
 
 nnoremap <leader>u :call RunPHPUnitTest(0)<cr>
-nnoremap <leader>f :call RunPHPUnitTest(1)<cr>
+" nnoremap <leader>f :call RunPHPUnitTest(1)<cr>
 nnoremap <leader>m :call GetClassMethods()<cr>
 nnoremap <leader>j :!jslint --unparam=true --nomen=true --es5=false --todo=true %<cr>
 nnoremap <leader>p m`:%!js-beautify -f - -j<cr>``
@@ -178,11 +178,15 @@ let g:ctrlp_clear_cache_on_exit = 0
 command! W write
 command! Wa wa
 
+au FileType go nmap <Leader>r <Plug>(go-run)
+au FileType go nmap <Leader>b <Plug>(go-build)
+au FileType go nmap <Leader>t <Plug>(go-test)
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 
-"set tabstop=4
-"set shiftwidth=4
-"set shiftwidth=4
-"set expandtab
 
-"set list
-"
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+nnoremap <leader>z oif err != nil {<CR>fmt.Fprintln(os.Stderr, "", err)<CR>}<ESC>kt"la
