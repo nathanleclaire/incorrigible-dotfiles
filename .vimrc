@@ -183,6 +183,7 @@ au FileType go nmap <Leader>b <Plug>(go-build)
 au FileType go nmap <Leader>t <Plug>(go-test)
 au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <leader>i <Plug>(go-install)
 
 
 set tabstop=4
@@ -190,3 +191,4 @@ set shiftwidth=4
 set expandtab
 
 nnoremap <leader>z oif err != nil {<CR>fmt.Fprintln(os.Stderr, "", err)<CR>}<ESC>kt"la
+setlocal spell spelllang=en_us
