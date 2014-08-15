@@ -139,7 +139,11 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 function newbox () {
-    docker run --name $1 --volumes-from=volume_container -it -v /var/run/docker.sock:/var/run/docker.sock -e BOX_NAME=$1 nathanleclaire/devbox
+    docker run -it --name $1 \
+       --volumes-from=volume_container \
+       -v /var/run/docker.sock:/var/run/docker.sock \
+       -e BOX_NAME=$1 \
+       nathanleclaire/devbox
 }
 function da () {
 	docker start $1 && docker attach $1
