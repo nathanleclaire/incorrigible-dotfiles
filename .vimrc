@@ -191,4 +191,7 @@ set shiftwidth=4
 set expandtab
 
 nnoremap <leader>z oif err != nil {<CR>fmt.Fprintln(os.Stderr, "", err)<CR>}<ESC>kt"la
-setlocal spell spelllang=en_us
+
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,README.md  setf markdown
+
+autocmd FileType markdown setlocal spell spelllang=en_us
