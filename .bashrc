@@ -175,3 +175,7 @@ dps-monitor() {
        sleep 0.5 
    done
 }
+
+cleanimages() {
+    docker rmi $(docker images | grep none | awk '{ print $3; }')
+}
