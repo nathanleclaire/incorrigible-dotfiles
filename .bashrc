@@ -151,10 +151,7 @@ function da () {
 alias drm="docker rm"
 alias dps="docker ps"
 
-if env | grep -q ^BOX_NAME=
-then
-	unset DOCKER_HOST
-else
+if [ $(uname -s) = "Darwin" ]; then
 	export DOCKER_HOST=tcp://boot2docker:2375
 fi
 
@@ -178,4 +175,8 @@ dps-monitor() {
 
 cleanimages() {
     docker rmi $(docker images | grep none | awk '{ print $3; }')
+}
+
+cleancontainers() {
+    docker rm $(docker ps -aq)
 }
