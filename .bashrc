@@ -153,6 +153,8 @@ alias dps="docker ps"
 
 if [ $(uname -s) = "Darwin" ]; then
 	export DOCKER_HOST=tcp://boot2docker:2375
+else
+    unset DOCKER_HOST
 fi
 
 function half() {
