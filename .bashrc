@@ -192,3 +192,5 @@ sfserver() {
     echo "=> Running static file server in $(pwd) on port ${PORT}..."
     docker run --rm -it -v $(pwd):/data -p $PORT:8000 nathanleclaire/sfserver
 }
+
+export EDITOR=emacs

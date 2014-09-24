@@ -195,3 +195,5 @@ nnoremap <leader>z oif err != nil {<CR>fmt.Fprintln(os.Stderr, "", err)<CR>}<ESC
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,README.md  setf markdown
 
 autocmd FileType markdown setlocal spell spelllang=en_us
+
+let GOPATH = "~/go"
