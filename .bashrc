@@ -182,3 +182,13 @@ cleanimages() {
 cleancontainers() {
     docker rm $(docker ps -aq)
 }
+
+sfserver() {
+    if [ $# -eq 0 ]; then
+        PORT=8000
+    else
+        PORT=$1
+    fi
+    echo "=> Running static file server in $(pwd) on port ${PORT}..."
+    docker run --rm -it -v $(pwd):/data -p $PORT:8000 nathanleclaire/sfserver
+}
