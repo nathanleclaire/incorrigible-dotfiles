@@ -18,13 +18,13 @@ case "$1" in
     sync)
         cd ${DIR} >/dev/null
         git fetch origin
-        if [[ "$1" == "" ]]; then
+        if [[ "$2" == "" ]]; then
             MSG="AUTOMATED DOTFILES UPDATE | $(whoami)@$(hostname) (ﾟヮﾟ)"
         else
-            MSG=$1
+            MSG=$2
         fi
         git add --all . && \
-            git commit -m ${MSG}
+            git commit -m "${MSG}"
         git rebase origin/master
         git push origin master
         cd - >/dev/null
