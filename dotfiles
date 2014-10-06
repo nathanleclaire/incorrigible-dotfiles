@@ -26,6 +26,6 @@ $2"
         cd -
         ;;
     *)
-        echo "Usage: dotfiles [install|sync]"
+        echo "Usage: dotfiles [diff|install|sync]"
         exit 1
 esac
