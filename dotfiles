@@ -9,6 +9,7 @@ case "$1" in
         ;;
     install)
         rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ~/.emacs.d
+        git submodule update --init --recursive
         ln -s ${DIR}/.vim ${HOME}/.vim
         ln -s ${DIR}/.vimrc ${HOME}/.vimrc
         ln -s ${DIR}/.bashrc ${HOME}/.bashrc
