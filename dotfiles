@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+case "$1" in 
+    install)
+        rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ~/.emacs.d
+        ln -s ${DIR}/.vim ${HOME}/.vim
+        ln -s ${DIR}/.vimrc ${HOME}/.vimrc
+        ln -s ${DIR}/.bashrc ${HOME}/.bashrc
+        ln -s ${DIR}/.emacs.d ${HOME}/.emacs.d
+        . ${HOME}/.bashrc
+        ;;
+    sync)
+        cd ${DIR}
+        git fetch origin && \
+            git add . && \
+            git commit -m "AUTOMATED DOTFILES UPDATE | $(date) $(whoami)@$(hostname) (ﾟヮﾟ)" && \
+            git rebase origin/master && \
+            git push origin master && \
+        cd -
+        ;;
+    *)
+        echo "Usage: dotfiles [install|sync]"
+        exit 1
+esac
