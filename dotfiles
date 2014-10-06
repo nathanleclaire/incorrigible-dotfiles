@@ -16,14 +16,14 @@ case "$1" in
         . ${HOME}/.bashrc
         ;;
     sync)
-        cd ${DIR}
+        cd ${DIR} >/dev/null
         git fetch origin
         git add --all . && \
             git commit -m "AUTOMATED DOTFILES UPDATE | $(date) $(whoami)@$(hostname) (ﾟヮﾟ)        
 $2"
         git rebase origin/master
         git push origin master
-        cd -
+        cd - >/dev/null
         ;;
     *)
         echo "Usage: dotfiles [diff|install|sync]"
