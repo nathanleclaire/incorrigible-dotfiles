@@ -13,7 +13,7 @@ case "$1" in
     sync)
         cd ${DIR}
         git fetch origin && \
-            git add . && \
+            git add --all . && \
             git commit -m "AUTOMATED DOTFILES UPDATE | $(date) $(whoami)@$(hostname) (ﾟヮﾟ)" && \
             git rebase origin/master && \
             git push origin master && \
