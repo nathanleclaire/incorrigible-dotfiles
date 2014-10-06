@@ -113,6 +113,10 @@ function parse_box () {
 	then
 		echo "{c:$BOX_NAME}"
 	else
+		HOSTNAME=$(hostname)
+		if [[ ${HOSTNAME} =~ [0-9a-f]{12} ]] ; then
+			echo "{c:${HOSTNAME}}"
+		fi
 		echo ""
 	fi
 }
