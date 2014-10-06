@@ -19,7 +19,8 @@ case "$1" in
         cd ${DIR} >/dev/null
         git fetch origin
         git add --all . && \
-            git commit -m "AUTOMATED DOTFILES UPDATE | $(date) $(whoami)@$(hostname) (ﾟヮﾟ)        
+            git commit -m "AUTOMATED DOTFILES UPDATE | $(whoami)@$(hostname) (ﾟヮﾟ)        
+
 $2"
         git rebase origin/master
         git push origin master
