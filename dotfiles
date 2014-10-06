@@ -2,6 +2,11 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 case "$1" in 
+    diff)
+        cd ${DIR}
+        git diff 
+        cd -
+        ;;
     install)
         rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ~/.emacs.d
         ln -s ${DIR}/.vim ${HOME}/.vim
@@ -14,7 +19,7 @@ case "$1" in
         cd ${DIR}
         git fetch origin
         git add --all . && \
-            git commit -m "AUTOMATED DOTFILES UPDATE | $(date) $(whoami)@$(hostname) (ﾟヮﾟ)"
+            git commit -m $"AUTOMATED DOTFILES UPDATE | $(date) $(whoami)@$(hostname) (ﾟヮﾟ)\n\n$2"
         git rebase origin/master
         git push origin master
         cd -
