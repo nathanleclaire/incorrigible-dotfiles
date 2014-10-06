@@ -3,9 +3,9 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 case "$1" in 
     diff)
-        cd ${DIR}
+        cd ${DIR} >/dev/null
         git diff 
-        cd -
+        cd - >/dev/null
         ;;
     install)
         rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ~/.emacs.d
