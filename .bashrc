@@ -108,26 +108,13 @@ function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/|\1|/'
 }
 
-function parse_box () {
-	if env | grep -q ^BOX_NAME=
-	then
-		echo "{c:$BOX_NAME}"
-	else
-		HOSTNAME=$(hostname)
-		if [[ ${HOSTNAME} =~ [0-9a-f]{12} ]] ; then
-			echo "{c:${HOSTNAME}}"
-		fi
-		echo ""
-	fi
-}
-
 export RED="\[\033[0;31m\]"
 export YELLOW="\[\033[0;33m\]"
 export GREEN="\[\033[0;32m\]"
 export LIGHT_GRAY="\[\033[0;37m\]"
 export NO_COLOUR="\[\033[0m\]"
 
-PS1="$RED\$(parse_box)$YELLOW\$(parse_git_branch)$GREEN\w$NO_COLOUR\$ "
+PS1="$RED{\$(hostname)}$YELLOW\$(parse_git_branch)$GREEN\w$NO_COLOUR\$ "
 
 [[ $- = *i* ]] && bind TAB:menu-complete
 
@@ -146,7 +133,6 @@ function newbox () {
     docker run -it --name $1 \
        --volumes-from=volume_container \
        -v /var/run/docker.sock:/var/run/docker.sock \
-       -e BOX_NAME=$1 \
        nathanleclaire/devbox
 }
 function da () {
