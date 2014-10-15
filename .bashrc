@@ -200,3 +200,7 @@ upgrade_docker_to() {
 }
 
 export EDITOR=vim
+
+if [[ $(uname -s) == "Darwin" ]]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+fi
