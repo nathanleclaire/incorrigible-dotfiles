@@ -206,3 +206,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
     export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.1.1/
     export PATH=$PATH:$EC2_HOME/bin 
 fi
+
+if [[ $(which git) != "" ]]; then 
+    git config --global user.email "nathan.leclaire@gmail.com"
+    git config --global user.name "Nathan LeClaire"
+fi
