@@ -40,9 +40,6 @@ case "$1" in
         if [[ ! -e ~/.ssh/id_rsa ]]; then
             ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
         fi
-        curl -i -u nathanleclaire \
-            -d '{"title": "`whoami`@`hostname`", "key": "`cat ~/.ssh/id_rsa.pub`"}' \
-            https://api.github.com/user/keys
         ;;
     sync)
         cd ${DIR} >/dev/null
