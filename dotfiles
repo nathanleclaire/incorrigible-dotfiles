@@ -35,8 +35,14 @@ case "$1" in
         ;;
     provision)
         if [[ "$2" == "ubuntu" ]]; then
-            sudo apt-get install -y tree mercurial
+            sudo apt-get install -y tree mercurial jq
         fi
+        if [[ ! -e ~/.ssh/id_rsa ]]; then
+            ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+        fi
+        curl -i -u nathanleclaire \
+            -d '{"title": "`whoami`@`hostname`", "key": "`cat ~/.ssh/id_rsa.pub`"}' \
+            https://api.github.com/user/keys
         ;;
     sync)
         cd ${DIR} >/dev/null
