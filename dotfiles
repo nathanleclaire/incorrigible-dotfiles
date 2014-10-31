@@ -23,7 +23,7 @@ case "$1" in
         cd - >/dev/null
         ;;
     install)
-        rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ~/.emacs.d
+        rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ${HOME}/.emacs.d ${HOME}/.tmux.conf
         cd ${DIR} >/dev/null
         git submodule update --init --recursive
         cd - >/dev/null
@@ -36,7 +36,13 @@ case "$1" in
         ;;
     provision)
         if [[ "$2" == "ubuntu" ]]; then
-            sudo apt-get install -y tree mercurial jq tmux htop make
+            sudo apt-get install -y tree git mercurial jq tmux htop make
+        fi
+        if [[ $(which git) != "" ]]; then 
+            git config --global user.name "Nathan LeClaire"
+            git config --global user.email "nathan.leclaire@gmail.com"
+            git config --global core.editor vim
+            git config --global push.default simple
         fi
         if [[ ! -e ~/.ssh/id_rsa ]]; then
             ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
