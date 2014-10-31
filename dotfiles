@@ -36,7 +36,7 @@ case "$1" in
         ;;
     provision)
         if [[ "$2" == "ubuntu" ]]; then
-            sudo apt-get install -y tree mercurial jq tmux htop
+            sudo apt-get install -y tree mercurial jq tmux htop make
         fi
         if [[ ! -e ~/.ssh/id_rsa ]]; then
             ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
