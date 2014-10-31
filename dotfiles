@@ -33,6 +33,11 @@ case "$1" in
         ln -s ${DIR}/.emacs.d ${HOME}/.emacs.d
         . ${HOME}/.bashrc
         ;;
+    provision)
+        if [[ "$2" == "ubuntu" ]]; then
+            sudo apt-get install -y tree mercurial
+        fi
+        ;;
     sync)
         cd ${DIR} >/dev/null
         git fetch origin
