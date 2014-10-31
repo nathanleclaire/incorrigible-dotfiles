@@ -205,6 +205,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
     export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.1.1/
     export PATH=$PATH:$EC2_HOME/bin 
+    export DOCKER_HOST=tcp://boot2docker:2376
+    export DOCKER_CERT_PATH=/Users/nathanleclaire/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
 fi
 
 if [[ $(which git) != "" ]]; then 
