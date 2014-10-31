@@ -17,7 +17,12 @@ sync_submodules () {
 
 provision_ubuntu () {
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential
+    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump
+}
+
+provision_osx () {
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install wget jq cmake autojump tmux weechat mercurial gnutls node tree autojump
 }
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -44,6 +49,8 @@ case "$1" in
             ubuntu)
                 provision_ubuntu
                 ;;
+            osx)
+                provision_osx
             *)
                 echo "Unknown OS specified.  Usage: dotfiles provision [ubuntu|osx]"
                 exit 1
