@@ -31,11 +31,12 @@ case "$1" in
         ln -s ${DIR}/.vimrc ${HOME}/.vimrc
         ln -s ${DIR}/.bashrc ${HOME}/.bashrc
         ln -s ${DIR}/.emacs.d ${HOME}/.emacs.d
+        ln -s ${DIR}/.tmux.conf ${HOME}/.tmux.conf
         . ${HOME}/.bashrc
         ;;
     provision)
         if [[ "$2" == "ubuntu" ]]; then
-            sudo apt-get install -y tree mercurial jq
+            sudo apt-get install -y tree mercurial jq tmux htop
         fi
         if [[ ! -e ~/.ssh/id_rsa ]]; then
             ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa

@@ -190,6 +190,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set t_ut=
+
 nnoremap <leader>z oif err != nil {<CR>fmt.Fprintln(os.Stderr, "", err)<CR>}<ESC>kt"la
 
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,README.md  setf markdown
