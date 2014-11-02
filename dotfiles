@@ -67,7 +67,7 @@ case "$1" in
             MSG=$2
         fi
         sync_submodules
-        git add --all . && \
+        git add --all :/ && \
             git commit -m "${MSG}"
         git rebase origin/master
         git push origin master
