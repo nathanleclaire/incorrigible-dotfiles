@@ -15,6 +15,11 @@ sync_submodules () {
     done
 }
 
+provision_ubuntu () {
+    curl -sL https://deb.nodesource.com/setup | sudo bash -
+    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential
+}
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 case "$1" in
     diff)
@@ -35,9 +40,14 @@ case "$1" in
         . ${HOME}/.bashrc
         ;;
     provision)
-        if [[ "$2" == "ubuntu" ]]; then
-            sudo apt-get install -y tree git mercurial jq tmux htop make
-        fi
+        case "$2" in 
+            ubuntu)
+                provision_ubuntu
+                ;;
+            *)
+                echo "Unknown OS specified.  Usage: dotfiles provision [ubuntu|osx]"
+                exit 1
+        esac
         if [[ $(which git) != "" ]]; then 
             git config --global user.name "Nathan LeClaire"
             git config --global user.email "nathan.leclaire@gmail.com"
