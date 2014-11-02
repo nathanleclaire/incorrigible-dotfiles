@@ -10,7 +10,7 @@ sync_submodules () {
     for submodule in ${SUBMODULES}; do
         echo "Updating ${submodule}..."
         cd ${submodule} >/dev/null
-        git add --all >/dev/null && git commit -m "$(automated_update_msg)"
+        git add --all :/ >/dev/null && git commit -m "$(automated_update_msg)"
         cd - >/dev/null
     done
 }
