@@ -1,6 +1,8 @@
 incorrigible-dotfiles
 =====================
 
+![](incorrigible.jpg)
+
 Sometimes I like to configure some things.
 
 Installation:
