@@ -51,6 +51,7 @@ case "$1" in
                 ;;
             osx)
                 provision_osx
+                ;;
             *)
                 echo "Unknown OS specified.  Usage: dotfiles provision [ubuntu|osx]"
                 exit 1

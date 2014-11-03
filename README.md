@@ -10,5 +10,5 @@ Installation:
 ```sh
 git clone --recursive git://github.com/nathanleclaire/incorrigible-dotfiles.git
 cd incorrigible-dotfiles
-./dotfiles install
+./dotfiles.sh install
 ```
