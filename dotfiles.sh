@@ -17,7 +17,7 @@ sync_submodules () {
 
 provision_ubuntu () {
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump emacs24
+    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump emacs24 golang-go go-lang-go.tools
 }
 
 provision_osx () {
