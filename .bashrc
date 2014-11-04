@@ -114,7 +114,16 @@ export GREEN="\[\033[0;32m\]"
 export LIGHT_GRAY="\[\033[0;37m\]"
 export NO_COLOUR="\[\033[0m\]"
 
-PS1="$RED{\$(hostname)}$YELLOW\$(parse_git_branch)$GREEN\w$NO_COLOUR\$ "
+function get_ps1 () {
+    if [[ $COLUMNS -lt 80 ]]; then
+        echo "$ "
+    else
+        echo "$RED{\$(hostname)}$YELLOW\$(parse_git_branch)$GREEN\w$NO_COLOUR\$ "
+    fi
+}
+
+
+PS1="$(get_ps1)"
 
 [[ $- = *i* ]] && bind TAB:menu-complete
 
@@ -213,10 +222,6 @@ fi
 if [[ $(which git) != "" ]]; then
     git config --global user.email "nathan.leclaire@gmail.com"
     git config --global user.name "Nathan LeClaire"
-fi
-
-if [[ $COLUMNS -lt 80 ]]; then
-    PS1="$ "
 fi
 
 alias e="emacsclient"
