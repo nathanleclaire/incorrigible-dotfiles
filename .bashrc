@@ -158,10 +158,10 @@ docker-enter() {
 
 dps-monitor() {
    while true
-   do 
-       clear 
+   do
+       clear
        docker ps | cut -c -$(tput cols)
-       sleep 0.5 
+       sleep 0.5
    done
 }
 
@@ -192,9 +192,9 @@ upgrade_docker_to() {
     chmod +x ${CURRENT_DOCKER_PATH}
 
     boot2docker ssh "
-    sudo mv /usr/local/bin/docker /usr/local/bin/docker.bak; 
-    wget http://test.docker.com/builds/Linux/x86_64/docker-$1 -O /usr/local/bin/docker; 
-    chmod +x /usr/local/bin/docker; 
+    sudo mv /usr/local/bin/docker /usr/local/bin/docker.bak;
+    wget http://test.docker.com/builds/Linux/x86_64/docker-$1 -O /usr/local/bin/docker;
+    chmod +x /usr/local/bin/docker;
     sudo /usr/local/etc/init.d/docker restart;
     "
 }
@@ -204,13 +204,19 @@ export EDITOR=vim
 if [[ $(uname -s) == "Darwin" ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
     export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.1.1/
-    export PATH=$PATH:$EC2_HOME/bin 
+    export PATH=$PATH:$EC2_HOME/bin
     export DOCKER_HOST=tcp://boot2docker:2376
     export DOCKER_CERT_PATH=/Users/nathanleclaire/.boot2docker/certs/boot2docker-vm
     export DOCKER_TLS_VERIFY=1
 fi
 
-if [[ $(which git) != "" ]]; then 
+if [[ $(which git) != "" ]]; then
     git config --global user.email "nathan.leclaire@gmail.com"
     git config --global user.name "Nathan LeClaire"
 fi
+
+if [[ $COLUMNS -lt 80 ]]; then
+    PS1="$ "
+fi
+
+alias e="emacsclient"
