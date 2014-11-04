@@ -12,4 +12,4 @@
 	url = https://github.com/tpope/vim-fugitive
 [submodule ".emacs.d"]
     path = .emacs.d
-    url = https://github.com/purcell/emacs.d
+    url = git@github.com:nathanleclaire/emacs.d
