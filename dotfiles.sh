@@ -37,11 +37,10 @@ case "$1" in
         cd ${DIR} >/dev/null
         git submodule update --init --recursive
         cd - >/dev/null
-        ln -s ${DIR}/.vim ${HOME}/.vim
-        ln -s ${DIR}/.vimrc ${HOME}/.vimrc
-        ln -s ${DIR}/.bashrc ${HOME}/.bashrc
-        ln -s ${DIR}/.emacs.d ${HOME}/.emacs.d
-        ln -s ${DIR}/.tmux.conf ${HOME}/.tmux.conf
+        FILES_TO_LINK=".vim .vimrc .bashrc .emacs.d .tmux.conf"
+        for file in ${FILES_TO_LINK}; do
+            ln -s ${DIR}/${file} ${HOME}/${file}
+        done
         . ${HOME}/.bashrc
         ;;
     provision)
