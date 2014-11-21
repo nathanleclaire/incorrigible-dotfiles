@@ -208,6 +208,10 @@ upgrade_docker_to() {
     "
 }
 
+rreplace () {
+    find . -type f -exec sed -i "s/$1/$2/" {} \;
+}
+
 export EDITOR=vim
 
 if [[ $(uname -s) == "Darwin" ]]; then
