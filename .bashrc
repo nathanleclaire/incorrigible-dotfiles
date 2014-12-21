@@ -229,3 +229,11 @@ if [[ $(which git) != "" ]]; then
 fi
 
 alias e="emacsclient"
+
+pageburn() { 
+    cd .themes/pageburner && \
+    git commit -am "Update theme" && \
+    cd - && \
+    git add .themes/pageburner && \
+    git commit -am "Update submodule" 
+}
