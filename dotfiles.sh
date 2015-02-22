@@ -1,12 +1,14 @@
 #!/bin/bash
 
+set -e
+
 automated_update_msg () {
     echo "AUTOMATED DOTFILES UPDATE | $(whoami)@$(hostname) (ﾟヮﾟ)"
 }
 
 sync_submodules () {
     VIMDIR=".vim/bundle"
-    SUBMODULES=".emacs.d ${VIMDIR}/ctrlp-matcher ${VIMDIR}/vim-fugitive ${VIMDIR}/vim-go"
+    SUBMODULES="${VIMDIR}/ctrlp-matcher ${VIMDIR}/vim-fugitive ${VIMDIR}/vim-go"
     for submodule in ${SUBMODULES}; do
         echo "Updating ${submodule}..."
         cd ${submodule} >/dev/null
@@ -17,7 +19,14 @@ sync_submodules () {
 
 provision_ubuntu () {
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump golang-go golang-go.tools
+    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump
+    VERSION="1.4.2"
+    OS="linux"
+    ARCH="amd64"
+    wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
+    sudo tar -C /usr/local -xzf /usr/local/go.tar.gz
+    sudo rm /usr/local/go.tar.gz
+    sudo apt-get install -y golang-go.tools
 }
 
 provision_osx () {
@@ -33,15 +42,16 @@ case "$1" in
         cd - >/dev/null
         ;;
     install)
-        rm -rf ${HOME}/.vim ${HOME}/.vimrc ${HOME}/.bashrc ${HOME}/.emacs.d ${HOME}/.tmux.conf
+        FILES_TO_LINK=".vim .vimrc .bashrc .zshrc .oh-my-zsh .tmux.conf"
+        for file in ${FILES_TO_LINK}; do
+            rm -rf ${HOME}/${file}
+        done
         cd ${DIR} >/dev/null
         git submodule update --init --recursive
         cd - >/dev/null
-        FILES_TO_LINK=".vim .vimrc .bashrc .emacs.d .tmux.conf"
         for file in ${FILES_TO_LINK}; do
             ln -s ${DIR}/${file} ${HOME}/${file}
         done
-        . ${HOME}/.bashrc
         ;;
     provision)
         case "$2" in 

@@ -10,6 +10,3 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule ".emacs.d"]
-    path = .emacs.d
-    url = git@github.com:nathanleclaire/emacs.d
