@@ -18,12 +18,13 @@ sync_submodules () {
 }
 
 provision_ubuntu () {
+    echo 127.0.1.1 $(hostname) | sudo tee -a /etc/hosts
     curl -sL https://deb.nodesource.com/setup | sudo bash -
     sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump
-    VERSION="1.4.2"
+    VERSION="1.6"
     OS="linux"
     ARCH="amd64"
-    wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
+    sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
     sudo tar -C /usr/local -xzf /usr/local/go.tar.gz
     sudo rm /usr/local/go.tar.gz
     sudo apt-get install -y golang-go.tools
