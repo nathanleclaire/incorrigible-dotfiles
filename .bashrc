@@ -104,7 +104,7 @@ fi
 #   . /etc/bash_completion
 #fi
 
-function parse_git_branch () {
+parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/|\1|/'
 }
 
@@ -114,20 +114,32 @@ export GREEN="\[\033[0;32m\]"
 export LIGHT_GRAY="\[\033[0;37m\]"
 export NO_COLOUR="\[\033[0m\]"
 
-function get_ps1 () {
-    if [[ $COLUMNS -lt 80 ]]; then
-        echo "$ "
+export lightblue="\e[38;05;111m"
+export lightgray="\e[38;05;101m"
+export lightgreen="\e[38;05;113m"
+export red="\e[38;05;196m"
+
+last_cmd_status() {
+    if [[ "$1" -eq 0 ]]; then
+        echo "${lightgreen}•"
     else
-        echo "$RED{\$(hostname)}$YELLOW\$(parse_git_branch)$GREEN\w$NO_COLOUR\$ "
+        echo "${red}•"
     fi
 }
 
+__prompt_command() {
+    local EXIT="$?"
+    if [[ $COLUMNS -lt 80 ]]; then
+        PS1="$ "
+    else
+        PS1="$(last_cmd_status "$EXIT")${lightblue}\$(parse_git_branch)${lightgray}\w\$ $NO_COLOUR"
+    fi
+}
 
-PS1="$(get_ps1)"
+export PROMPT_COMMAND=__prompt_command
 
 [[ $- = *i* ]] && bind TAB:menu-complete
 
-export TERM=xterm-256color
 bind '"\eOC":forward-word'
 bind '"\eOD":backward-word'
 
@@ -138,13 +150,14 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
-function newbox () {
+newbox() {
     docker run -it --name $1 \
        --volumes-from=volume_container \
        -v /var/run/docker.sock:/var/run/docker.sock \
        nathanleclaire/devbox
 }
-function da () {
+
+da() {
 	docker start $1 && docker attach $1
 }
 alias drm="docker rm"
@@ -156,7 +169,7 @@ else
     unset DOCKER_HOST
 fi
 
-function half() {
+half() {
 	convert -resize 50% $1 $1
 }
 
