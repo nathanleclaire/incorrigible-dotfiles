@@ -53,15 +53,9 @@ last_cmd_status() {
 __prompt_command() {
     local EXIT="$?"
 
-    # Append this terminal's history list to history file
+    # Append this terminal's history list to history file.  This will write the
+    # history after every command without needing to 'exit' first.
     history -a
-
-    # Clear this terminal's history list
-    history -c
-
-    # Append output from other terminals to this terminal's now empty active
-    # history list
-    history -r
 
     if [[ $COLUMNS -lt 80 ]]; then
         PS1="$ "
