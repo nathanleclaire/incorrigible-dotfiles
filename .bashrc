@@ -123,6 +123,3 @@ if [[ $(which git) != "" ]]; then
     git config --global user.email "nathan.leclaire@gmail.com"
     git config --global user.name "Nathan LeClaire"
 fi
-
-
-}
