@@ -3,7 +3,7 @@
 set -e
 
 automated_update_msg () {
-    echo "AUTOMATED DOTFILES UPDATE | $(whoami)@$(hostname) (ﾟヮﾟ)"
+    echo "AUTOMATED DOTFILES UPDATE | $(whoami)@$(hostname)"
 }
 
 sync_submodules () {
@@ -84,7 +84,7 @@ case "$1" in
         else
             MSG=$2
         fi
-        sync_submodules
+        #sync_submodules
         git add --all :/ && \
             git commit -m "${MSG}"
         git rebase origin/master

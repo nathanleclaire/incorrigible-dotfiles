@@ -16,6 +16,12 @@
 [submodule ".vim/bundle/rust.vim"]
 	path = .vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule ".vim/bundle/hclfmt"]
+    path = .vim/bundle/vim-hclfmt
+    url = https://github.com/fatih/vim-hclfmt
+[submodule ".vim/bundle/clojure-static"]
+    path = .vim/bundle/vim-clojure-static
+    url = https://github.com/guns/vim-clojure-static
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh

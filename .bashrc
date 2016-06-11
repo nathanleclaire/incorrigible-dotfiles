@@ -3,14 +3,14 @@
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
-HISTSIZE="20000"
-HISTFILESIZE="20000"
-CLICOLOR=1
-LSCOLORS=GxFxCxDxBxegedabagaced
-GOPATH=$HOME/go
-PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-EDITOR=vim
+export HISTCONTROL=ignoredups:ignorespace
+export HISTSIZE="20000"
+export HISTFILESIZE="20000"
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export EDITOR=vim
 
 nocolor="\[\033[0m\]"
 lightblue="\e[38;05;111m"
@@ -18,10 +18,18 @@ lightgray="\e[38;05;101m"
 lightgreen="\e[38;05;113m"
 red="\e[38;05;196m"
 
-if [[ $(uname -s) == "Darwin" ]]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
-    export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.1.1/
-    export PATH=$PATH:$EC2_HOME/bin
+if [[ $(uname -s) != "Darwin" ]]; then
+    # append to the history file, don't overwrite it
+    shopt -s histappend
+
+    # check the window size after each command and, if necessary,
+    # update the values of LINES and COLUMNS.
+    shopt -s checkwinsize
+
+    [[ $- = *i* ]] && bind TAB:menu-complete
+
+    bind '"\eOC":forward-word'
+    bind '"\eOD":backward-word'
 fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -30,13 +38,6 @@ fi
 force_color_prompt=yes
 
 export PROMPT_COMMAND=__prompt_command
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/|\1|/'
@@ -113,11 +114,6 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-[[ $- = *i* ]] && bind TAB:menu-complete
-
-bind '"\eOC":forward-word'
-bind '"\eOD":backward-word'
 
 if [[ $(which git) != "" ]]; then
     git config --global user.email "nathan.leclaire@gmail.com"
