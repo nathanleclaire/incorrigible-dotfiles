@@ -13,10 +13,10 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export EDITOR=vim
 
 nocolor="\[\033[0m\]"
-lightblue="\e[38;05;111m"
-lightgray="\e[38;05;101m"
-lightgreen="\e[38;05;113m"
-red="\e[38;05;196m"
+lightblue="\[\e[38;05;111m\]"
+lightgray="\[\e[38;05;101m\]"
+lightgreen="\[\e[38;05;113m\]"
+red="\[\e[38;05;196m\]"
 
 if [[ $(uname -s) != "Darwin" ]]; then
     # append to the history file, don't overwrite it
