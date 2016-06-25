@@ -15,7 +15,8 @@ syn case  ignore
 syn keyword dockerfileKeywords FROM MAINTAINER RUN CMD
 syn keyword dockerfileKeywords EXPOSE ENV ADD ENTRYPOINT COPY
 syn keyword dockerfileKeywords VOLUME USER WORKDIR ONBUILD
-syn keyword dockerfileKeywords COPY
+syn keyword dockerfileKeywords COPY HEALTHCHECK LABEL SHELL STOPSIGNAL
+syn keyword dockerfileKeywords ARG
 
 " Bash statements
 setlocal iskeyword+=-
