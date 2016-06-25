@@ -1,0 +1,35 @@
+[user]
+        name = Nathan LeClaire
+        email = nathan.leclaire@gmail.com
+
+[core]
+        editor = vim
+
+[push]
+        default = simple
+
+[github]
+        user = nathanleclaire
+
+[color]
+        ui = always
+
+[diff]
+        algorithm = minimal
+        compactionHeuristic = true
+        renames = true
+
+[color "diff"]
+        frag = magenta bold
+        old = red bold
+        new = green bold
+        whitespace = red reverse
+
+[color "diff-highlight"]
+        oldNormal = red bold
+        oldHighlight = "red bold 52"
+        newNormal = "green bold"
+        newHighlight = "green bold 22"
+
+[core]
+        pager = diff-highlight | less -RFX

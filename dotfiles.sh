@@ -21,7 +21,7 @@ provision_ubuntu () {
     echo 127.0.1.1 $(hostname) | sudo tee -a /etc/hosts
     curl -sL https://deb.nodesource.com/setup | sudo bash -
     sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump
-    VERSION="1.6"
+    VERSION="1.6.2"
     OS="linux"
     ARCH="amd64"
     sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
@@ -43,7 +43,7 @@ case "$1" in
         cd - >/dev/null
         ;;
     install)
-        FILES_TO_LINK=".vim .vimrc .bashrc .zshrc .oh-my-zsh .tmux.conf"
+        FILES_TO_LINK=".vim .vimrc .bashrc .zshrc .oh-my-zsh .tmux.conf .gitconfig"
         for file in ${FILES_TO_LINK}; do
             rm -rf ${HOME}/${file}
         done
@@ -66,12 +66,6 @@ case "$1" in
                 echo "Unknown OS specified.  Usage: dotfiles provision [ubuntu|osx]"
                 exit 1
         esac
-        if [[ $(which git) != "" ]]; then 
-            git config --global user.name "Nathan LeClaire"
-            git config --global user.email "nathan.leclaire@gmail.com"
-            git config --global core.editor vim
-            git config --global push.default simple
-        fi
         if [[ ! -e ~/.ssh/id_rsa ]]; then
             ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
         fi
