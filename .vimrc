@@ -39,6 +39,9 @@ set tags=tags;/
 " open existing tab/window when switching buffers, otherwise open new tab
 set switchbuf=usetab,useopen,newtab
 
+" Show trailing whitepace and spaces before a tab:
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
 " tab navigation
 map <C-t>p :tabprevious<CR>
 map <C-t>n :tabnext<CR>
@@ -137,3 +140,6 @@ au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,README.md  setf markdown
 
 " Spell check Markdown files
 autocmd FileType markdown setlocal spell spelllang=en_us
+
+" Wrap Markdown file to 80 char column
+au BufRead,BufNewFile *.md setlocal textwidth=80
