@@ -1,6 +1,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+shopt -s checkwinsize
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoredups:ignorespace
@@ -13,10 +15,10 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export EDITOR=vim
 
 nocolor="\[\033[0m\]"
-lightblue="\[\e[38;05;111m\]"
-lightgray="\[\e[38;05;101m\]"
-lightgreen="\[\e[38;05;113m\]"
-red="\[\e[38;05;196m\]"
+lightblue="\[\033[38;05;111m\]"
+lightgray="\[\033[38;05;101m\]"
+lightgreen="\[\033[38;05;113m\]"
+red="\[\033[38;05;196m\]"
 
 if [[ $(uname -s) != "Darwin" ]]; then
     # append to the history file, don't overwrite it
@@ -61,7 +63,7 @@ __prompt_command() {
     if [[ $COLUMNS -lt 80 ]]; then
         PS1="$ "
     else
-        PS1="$(last_cmd_status "$EXIT")${lightblue}\$(parse_git_branch)${lightgray}\w\$ ${nocolor}"
+        PS1="$(last_cmd_status "$EXIT")${lightblue}$(parse_git_branch)${lightgray}\w\$ ${nocolor}"
     fi
 }
 
