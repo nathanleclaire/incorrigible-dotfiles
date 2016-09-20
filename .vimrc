@@ -13,10 +13,6 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 set noeol
 
-" set tab width/behavior
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-set expandtab
-
 " seek to matches as they are typed
 set incsearch
 
@@ -107,7 +103,7 @@ nnoremap <leader>m :call GetClassMethods()<cr>
 " Functions for working with JavaScript
 " Requires global jslint and js-beautify modules installed via npm
 nnoremap <leader>j :!jslint --unparam=true --nomen=true --es5=false --todo=true %<cr>
-nnoremap <leader>p m`:%!js-beautify -f - -j<cr>``
+nnoremap <leader>p m`:%!js-beautify --keep-function-indentation --jslint-happy --brace-style collapse -<cr>``
 nnoremap <leader>h m`:%!js-beautify --type html -f -<cr>``
 
 " Bootstrapping pathogen plugins and vim behavior
@@ -137,6 +133,8 @@ let g:rustfmt_autosave = 1
 
 " Take care of Markdown file ending edge cases
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,README.md  setf markdown
+
+au BufNewFile,BufRead *.hcl  setf toml
 
 " Spell check Markdown files
 autocmd FileType markdown setlocal spell spelllang=en_us
