@@ -1,6 +1,6 @@
 [user]
-        name = Nathan LeClaire
-        email = nathan.leclaire@gmail.com
+	name = Nathan LeClaire
+	email = nathan.leclaire@gmail.com
 
 [core]
         editor = vim

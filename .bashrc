@@ -14,11 +14,11 @@ export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export EDITOR=vim
 
-nocolor="\[\033[0m\]"
-lightblue="\[\033[38;05;111m\]"
-lightgray="\[\033[38;05;101m\]"
-lightgreen="\[\033[38;05;113m\]"
-red="\[\033[38;05;196m\]"
+nocolor="\[\e[0m\]"
+lightblue="\[\e[38;5;111m\]"
+lightgray="\[\e[38;5;101m\]"
+lightgreen="\[\e[38;5;113m\]"
+red="\[\e[38;5;196m\]"
 
 if [[ $(uname -s) != "Darwin" ]]; then
     # append to the history file, don't overwrite it
@@ -42,7 +42,7 @@ force_color_prompt=yes
 export PROMPT_COMMAND=__prompt_command
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/|\1|/'
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/|\1|/'
 }
 
 last_cmd_status() {
@@ -121,3 +121,5 @@ if [[ $(which git) != "" ]]; then
     git config --global user.email "nathan.leclaire@gmail.com"
     git config --global user.name "Nathan LeClaire"
 fi
+
+alias dm="docker-machine"
