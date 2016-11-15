@@ -123,3 +123,7 @@ if [[ $(which git) != "" ]]; then
 fi
 
 alias dm="docker-machine"
+
+if [[ $(which python3) != "" ]]; then
+    alias python=python3
+fi
