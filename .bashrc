@@ -8,6 +8,7 @@ shopt -s checkwinsize
 export HISTCONTROL=ignoredups:ignorespace
 export HISTSIZE="20000"
 export HISTFILESIZE="20000"
+export HISTTIMEFORMAT="%a, %d %b %Y %T "
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export GOPATH=$HOME/go

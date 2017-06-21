@@ -33,3 +33,5 @@
 
 [core]
         pager = diff-highlight | less -RFX
+[url "git@github.com:"]
+	insteadOf = https://github.com/

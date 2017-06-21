@@ -14,7 +14,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set noeol
 
 " set tab width/behavior
-set tabstop=8 softtabstop=8 shiftwidth=4 noexpandtab
+set tabstop=8 softtabstop=8 noexpandtab
 
 " seek to matches as they are typed
 set incsearch

@@ -19,16 +19,15 @@ sync_submodules () {
 
 provision_ubuntu () {
     #echo 127.0.1.1 $(hostname) | sudo tee -a /etc/hosts
+    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump vim curl
     curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
-    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump vim
     curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
-    VERSION="1.7.3"
+    VERSION="1.8.3"
     OS="linux"
     ARCH="amd64"
     sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
     sudo tar -C /usr/local -xzf /usr/local/go.tar.gz
     sudo rm /usr/local/go.tar.gz
-    sudo apt-get install -y golang-go.tools
 }
 
 provision_osx () {
