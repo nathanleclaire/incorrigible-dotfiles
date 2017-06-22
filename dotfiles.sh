@@ -19,7 +19,7 @@ sync_submodules () {
 
 provision_ubuntu () {
     #echo 127.0.1.1 $(hostname) | sudo tee -a /etc/hosts
-    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump vim curl
+    sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump vim curl strace
     curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
     curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
     VERSION="1.8.3"
