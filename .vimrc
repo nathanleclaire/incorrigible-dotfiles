@@ -14,7 +14,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set noeol
 
 " set tab width/behavior
-set tabstop=8 softtabstop=8 noexpandtab
+" set tabstop=8 softtabstop=8 noexpandtab
 
 " seek to matches as they are typed
 set incsearch
@@ -142,5 +142,13 @@ au BufNewFile,BufRead *.hcl  setf toml
 " Spell check Markdown files
 autocmd FileType markdown setlocal spell spelllang=en_us
 
+" Set indentation behavior for JS/JSX
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+autocmd BufNewFile,BufRead *.jsx setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+autocmd BufNewFile,BufRead *.scss setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+
 " Wrap Markdown file to 80 char column
 au BufRead,BufNewFile *.md setlocal textwidth=80
+let g:hcl_fmt_autosave = 1
+let g:tf_fmt_autosave = 1
+let g:nomad_fmt_autosave = 1

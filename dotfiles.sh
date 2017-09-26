@@ -19,10 +19,11 @@ sync_submodules () {
 
 provision_ubuntu () {
     #echo 127.0.1.1 $(hostname) | sudo tee -a /etc/hosts
+    sudo apt-get update
     sudo apt-get install -y tree git mercurial jq tmux htop make nodejs build-essential autojump vim curl strace
     curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
-    curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
-    VERSION="1.8.3"
+    curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
+    VERSION="1.9"
     OS="linux"
     ARCH="amd64"
     sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
