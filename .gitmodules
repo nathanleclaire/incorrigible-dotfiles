@@ -1,9 +1,9 @@
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule ".vim/bundle/ctrlp-matcher"]
 	path = .vim/bundle/ctrlp-matcher
-	url = https://github.com/JazzCore/ctrlp-cmatcher/
+	url = https://github.com/JazzCore/ctrlp-cmatcher
 [submodule ".vim/bundle/vim-go"]
 	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go
