@@ -128,3 +128,7 @@ alias dm="docker-machine"
 if [[ $(which python3) != "" ]]; then
     alias python=python3
 fi
+if [[ $(uname) = "Linux" ]]; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi

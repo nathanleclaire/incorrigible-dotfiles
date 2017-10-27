@@ -145,6 +145,8 @@ autocmd FileType markdown setlocal spell spelllang=en_us
 " Set indentation behavior for JS/JSX
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
 autocmd BufNewFile,BufRead *.jsx setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+autocmd BufNewFile,BufRead *.html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+autocmd BufNewFile,BufRead *.tmpl setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
 autocmd BufNewFile,BufRead *.scss setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
 
 " Wrap Markdown file to 80 char column
