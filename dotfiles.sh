@@ -51,6 +51,9 @@ case "$1" in
         done
         cd ${DIR} >/dev/null
         git submodule update --init --recursive
+	(
+	    cd .vim/bundle/ctrlp-matcher && ./install.sh && cd -
+	)
         cd - >/dev/null
         for file in ${FILES_TO_LINK}; do
             ln -s ${DIR}/${file} ${HOME}/${file}
