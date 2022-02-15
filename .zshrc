@@ -99,12 +99,6 @@ function da () {
 alias drm="docker rm"
 alias dps="docker ps"
 
-if [ $(uname -s) = "Darwin" ]; then
-	export DOCKER_HOST=tcp://boot2docker:2375
-else
-    unset DOCKER_HOST
-fi
-
 function half() {
 	convert -resize 50% $1 $1
 }
@@ -136,22 +130,6 @@ sfserver() {
     docker run --rm -it -v $(pwd):/data -p $PORT:8000 nathanleclaire/sfserver
 }
 
-upgrade_docker_to() {
-    CURRENT_DOCKER_PATH=$(which docker)
-
-    # "backup" existing docker binary
-    mv ${CURRENT_DOCKER_PATH} ${CURRENT_DOCKER_PATH}.bak
-    wget "https://test.docker.com/builds/Darwin/x86_64/docker-$1" -O ${CURRENT_DOCKER_PATH}
-    chmod +x ${CURRENT_DOCKER_PATH}
-
-    boot2docker ssh "
-    sudo mv /usr/local/bin/docker /usr/local/bin/docker.bak;
-    wget http://test.docker.com/builds/Linux/x86_64/docker-$1 -O /usr/local/bin/docker;
-    chmod +x /usr/local/bin/docker;
-    sudo /usr/local/etc/init.d/docker restart;
-    "
-}
-
 rreplace () {
     find . -type f -exec sed -i "s/$1/$2/" {} \;
 }
@@ -180,3 +158,7 @@ pageburn() {
     git add .themes/pageburner && \
     git commit -am "Update submodule" 
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

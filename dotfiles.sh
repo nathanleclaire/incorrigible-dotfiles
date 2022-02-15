@@ -33,8 +33,8 @@ provision_ubuntu () {
 }
 
 provision_osx () {
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install wget jq cmake autojump tmux weechat mercurial gnutls node tree autojump
+    brew install bash wget jq cmake tmux weechat mercurial gnutls node tree autojump openssl coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -45,7 +45,7 @@ case "$1" in
         cd - >/dev/null
         ;;
     install)
-        FILES_TO_LINK=".vim .vimrc .bashrc .zshrc .oh-my-zsh .tmux.conf .gitconfig"
+        FILES_TO_LINK=".vim .vimrc .bashrc .oh-my-zsh .tmux.conf .gitconfig"
         for file in ${FILES_TO_LINK}; do
             rm -rf ${HOME}/${file}
         done

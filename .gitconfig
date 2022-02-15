@@ -32,6 +32,6 @@
         newHighlight = "green bold 22"
 
 [core]
-        pager = diff-highlight | less -RFX
+        pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -RFX
 [url "git@github.com:"]
 	insteadOf = https://github.com/
