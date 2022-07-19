@@ -1,8 +1,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-shopt -s checkwinsize
-
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoredups:ignorespace
@@ -33,6 +31,8 @@ if [[ $(uname -s) != "Darwin" ]]; then
 
     bind '"\eOC":forward-word'
     bind '"\eOD":backward-word'
+else
+    PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -124,6 +124,10 @@ if [[ $(which git) != "" ]]; then
 fi
 
 alias dm="docker-machine"
+
+lg () {
+    rg -p "$@" | less -RFX
+}
 
 if [[ $(which python3) != "" ]]; then
     alias python=python3

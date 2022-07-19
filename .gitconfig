@@ -1,6 +1,6 @@
 [user]
 	name = Nathan LeClaire
-	email = nathan.leclaire@gmail.com
+	email = nathan@cryptoworkbench.io
 
 [core]
         editor = vim
@@ -33,5 +33,7 @@
 
 [core]
         pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -RFX
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
