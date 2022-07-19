@@ -33,7 +33,28 @@ provision_ubuntu () {
 }
 
 provision_osx () {
-    brew install bash wget jq cmake tmux weechat mercurial gnutls node tree autojump openssl coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
+    brew install \
+	    bash \
+	    wget \
+	    jq \
+	    cmake \
+	    tmux \
+	    weechat \
+	    mercurial \
+	    gnutls \
+	    node \
+	    tree \
+	    autojump \
+	    openssl \
+	    coreutils \
+	    findutils \
+	    gnu-tar \
+	    gnu-sed \
+	    gawk \
+	    gnutls \
+	    gnu-indent \
+	    gnu-getopt \
+	    bash-completion@2
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
