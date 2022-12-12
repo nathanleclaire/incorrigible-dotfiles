@@ -21,10 +21,10 @@ provision_ubuntu () {
     #echo 127.0.1.1 $(hostname) | sudo tee -a /etc/hosts
     sudo apt-get update
     sudo apt-get install -y tree git mercurial jq tmux htop make build-essential autojump vim curl strace sysstat tcpdump dnsutils
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+    curl -sL https://deb.nodesource.com/setup_18.x | sudo bash -
     sudo apt-get install -y nodejs
     curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
-    VERSION="1.9.2"
+    VERSION="1.19.3"
     OS="linux"
     ARCH="amd64"
     sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
