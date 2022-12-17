@@ -8,7 +8,7 @@ automated_update_msg () {
 
 sync_submodules () {
     VIMDIR=".vim/bundle"
-    SUBMODULES="${VIMDIR}/ctrlp-matcher ${VIMDIR}/vim-fugitive ${VIMDIR}/vim-go"
+    SUBMODULES="${VIMDIR}/vim-fugitive ${VIMDIR}/vim-go"
     for submodule in ${SUBMODULES}; do
         echo "Updating ${submodule}..."
         cd ${submodule} >/dev/null
