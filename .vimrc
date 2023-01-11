@@ -30,7 +30,7 @@ hi Search term=reverse cterm=NONE ctermfg=White ctermbg=Red gui=NONE guifg=White
 colo wombat256mod
 
 " line numbers
-set number
+set nonumber
 
 " search recursively up directory tree for tags file
 set tags=tags;/
@@ -148,9 +148,12 @@ autocmd BufNewFile,BufRead *.jsx setlocal shiftwidth=4 tabstop=4 softtabstop=4 e
 autocmd BufNewFile,BufRead *.html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
 autocmd BufNewFile,BufRead *.tmpl setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
 autocmd BufNewFile,BufRead *.scss setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+au BufNewFile,BufRead *.css set filetype=css
 
 " Wrap Markdown file to 80 char column
 au BufRead,BufNewFile *.md setlocal textwidth=80
 let g:hcl_fmt_autosave = 1
 let g:tf_fmt_autosave = 1
 let g:nomad_fmt_autosave = 1
+let g:ale_fix_on_save = 1
