@@ -12,6 +12,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export EDITOR=vim
+export TERM=xterm-256color
 
 nocolor="\[\e[0m\]"
 lightblue="\[\e[38;5;111m\]"

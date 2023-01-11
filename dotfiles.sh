@@ -26,7 +26,12 @@ provision_ubuntu () {
     curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
     VERSION="1.19.3"
     OS="linux"
-    ARCH="amd64"
+    UNAME_ARCH=$(uname -m)
+    if [[ "${UNAME_ARCH}" == "x86_64" ]]; then
+        ARCH="amd64"
+    else
+        ARCH="arm64"
+    fi
     sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
     sudo tar -C /usr/local -xzf /usr/local/go.tar.gz
     sudo rm /usr/local/go.tar.gz
