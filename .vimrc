@@ -76,38 +76,10 @@ inoremap (<CR> ()<ESC>i<CR><ESC>ko
 inoremap [<CR> []<ESC>i<CR><ESC>ko
 
 au BufRead,BufNewFile *.XSD setfiletype xml
-nnoremap <leader>l :!php -ln %<CR>
 nnoremap <C-h> b
 nnoremap <C-j> }
 nnoremap <C-k> {
 nnoremap <C-l> w
-
-" Invoke a PHPUnit test from inside of the test file
-function! RunPHPUnitTest(filter)
-	cd %:p:h
-	if a:filter
-		normal! T yw
-		"normal! byw
-		let result = system("phpunit --filter " . @" . " " . bufname("%"))
-	else
-		let result = system("phpunit " . bufname("%"))
-	endif
-	split __PHPUnit_Result__
-	normal! ggdG
-	setlocal buftype=nofile
-	call append(0, split(result, '\v\n'))
-	cd -
-endfunction
-
-nnoremap <leader>u :call RunPHPUnitTest(0)<cr>
-" nnoremap <leader>f :call RunPHPUnitTest(1)<cr>
-nnoremap <leader>m :call GetClassMethods()<cr>
-
-" Functions for working with JavaScript
-" Requires global jslint and js-beautify modules installed via npm
-nnoremap <leader>j :!jslint --unparam=true --nomen=true --es5=false --todo=true %<cr>
-nnoremap <leader>p m`:%!js-beautify --keep-function-indentation --jslint-happy --brace-style collapse -<cr>``
-nnoremap <leader>h m`:%!js-beautify --type html -f -<cr>``
 
 " Bootstrapping pathogen plugins and vim behavior
 execute pathogen#infect()
@@ -143,11 +115,11 @@ au BufNewFile,BufRead *.hcl  setf toml
 autocmd FileType markdown setlocal spell spelllang=en_us
 
 " Set indentation behavior for JS/JSX
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
-autocmd BufNewFile,BufRead *.jsx setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
-autocmd BufNewFile,BufRead *.html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
-autocmd BufNewFile,BufRead *.tmpl setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
-autocmd BufNewFile,BufRead *.scss setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
+autocmd BufNewFile,BufRead *.jsx setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
+autocmd BufNewFile,BufRead *.html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
+autocmd BufNewFile,BufRead *.tmpl setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
+autocmd BufNewFile,BufRead *.scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
 au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 au BufNewFile,BufRead *.css set filetype=css
 
@@ -157,3 +129,11 @@ let g:hcl_fmt_autosave = 1
 let g:tf_fmt_autosave = 1
 let g:nomad_fmt_autosave = 1
 let g:ale_fix_on_save = 1
+
+set backspace=indent,eol,start
+
+" map CTRL+\ in insert mode to (Plug)copilot-suggest
+inoremap <C-\> <Plug>(copilot-suggest)
+
+" map CTRL+] in insert mode to (Plug)copilot-next
+inoremap <C-]> <Plug>(copilot-next)

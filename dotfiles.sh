@@ -23,6 +23,7 @@ provision_ubuntu () {
     sudo apt-get install -y python2 libpython2-dev python3 libpython3-dev python3-venv tree git mercurial jq tmux htop make build-essential autojump vim curl strace sysstat tcpdump dnsutils zip unzip
     curl -sL https://deb.nodesource.com/setup_18.x | sudo bash -
     sudo apt-get install -y nodejs
+    sudo npm install -g prettier
     curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
     VERSION="1.19.5"
     OS="linux"
