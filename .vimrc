@@ -122,6 +122,7 @@ autocmd BufNewFile,BufRead *.tmpl setlocal shiftwidth=2 tabstop=2 softtabstop=2 
 autocmd BufNewFile,BufRead *.scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
 au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 au BufNewFile,BufRead *.css set filetype=css
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 " Wrap Markdown file to 80 char column
 au BufRead,BufNewFile *.md setlocal textwidth=80

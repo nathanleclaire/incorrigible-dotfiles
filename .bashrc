@@ -44,7 +44,7 @@ force_color_prompt=yes
 export PROMPT_COMMAND=__prompt_command
 
 parse_git_branch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/|\1|/'
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ᚴ\1/'
 }
 
 last_cmd_status() {
@@ -65,7 +65,8 @@ __prompt_command() {
     if [[ $COLUMNS -lt 80 ]]; then
         PS1="$ "
     else
-        PS1="$(last_cmd_status "$EXIT")${lightblue}$(parse_git_branch)${lightgray}\w\$ ${nocolor}"
+	PS1="\n$ "
+	    #PS1="$(last_cmd_status "$EXIT")${lightblue}$(parse_git_branch)${lightgray} $(basename $(pwd))\$ ${nocolor}"
     fi
 }
 
@@ -138,3 +139,12 @@ if [[ $(uname) = "Linux" ]]; then
     alias pbpaste='xsel --clipboard --output'
 fi
 #. "$HOME/.cargo/env"
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+howto () {
+    gh copilot suggest -t shell "$@"
+}
+

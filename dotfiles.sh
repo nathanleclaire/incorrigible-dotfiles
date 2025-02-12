@@ -25,7 +25,7 @@ provision_ubuntu () {
     sudo apt-get install -y nodejs
     sudo npm install -g prettier
     curl https://raw.githubusercontent.com/git/git/fd99e2bda0ca6a361ef03c04d6d7fdc7a9c40b78/contrib/diff-highlight/diff-highlight | sudo tee /usr/local/bin/diff-highlight && sudo chmod +x /usr/local/bin/diff-highlight
-    VERSION="1.19.5"
+    VERSION="1.24.0"
     OS="linux"
     UNAME_ARCH=$(uname -m)
     if [[ "${UNAME_ARCH}" == "x86_64" ]]; then
@@ -36,6 +36,7 @@ provision_ubuntu () {
     sudo wget https://storage.googleapis.com/golang/go${VERSION}.${OS}-${ARCH}.tar.gz -O /usr/local/go.tar.gz
     sudo tar -C /usr/local -xzf /usr/local/go.tar.gz
     sudo rm /usr/local/go.tar.gz
+    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 }
 
 provision_osx () {
@@ -62,6 +63,7 @@ provision_osx () {
 	    gnu-getopt \
 	    bash-completion@2
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 }
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
